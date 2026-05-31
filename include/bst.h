@@ -91,7 +91,7 @@ class BST {
     std::sort(nodes.begin(), nodes.end(), [](const TreeNode* a, const TreeNode* b) {
       if (a->freq != b->freq)
         return a->freq > b->freq;
-      return a->key < b->key; 
+      return a->key < b->key;
     });
     return nodes;
   }
