@@ -27,7 +27,7 @@ void makeTree(BST<std::string>& tree, const char* filename) {
     in.close();
 }
 
-void dumpFrequencies(BST<std::string>& container) {
+void printFreq(BST<std::string>& container) {
     auto items = container.getNodesByFrequency();
     std::ofstream out("freq.txt");
     for (auto* node : items) {
