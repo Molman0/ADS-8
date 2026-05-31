@@ -92,6 +92,6 @@ public:
 };
 
 void makeTree(BST<std::string>& tree, const char* filename);
-void dumpFrequencies(BST<std::string>& container);
+void printFreq(BST<std::string>& container);
 
 #endif  // INCLUDE_BST_H_
