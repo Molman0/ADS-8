@@ -13,8 +13,7 @@ void makeTree(BST<std::string>& tree, const char* filename) {
     while (in.get(ch)) {
         if (ch >= 0 && ch <= 127 && std::isalpha(static_cast<unsigned char>(ch))) {
             curWord.push_back(std::tolower(static_cast<unsigned char>(ch)));
-        }
-        else {
+        } else {
             if (!curWord.empty()) {
                 tree.add(curWord);
                 curWord.clear();
