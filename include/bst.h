@@ -1,6 +1,9 @@
 // Copyright 2021 NNTU-CS
 #ifndef INCLUDE_BST_H_
 #define INCLUDE_BST_H_
+#ifndef BST_H
+#define BST_H
+
 #include <vector>
 #include <algorithm>
 
@@ -24,7 +27,6 @@ private:
             node->right = insertRec(node->right, value);
         else
             node->freq++;
-
         return node;
     }
     TreeNode* findRec(TreeNode* node, const T& value) const {
@@ -72,7 +74,6 @@ public:
     int getHeight() const {
         return heightRec(treeRoot);
     }
-
     bool isEmpty() const {
         return treeRoot == nullptr;
     }
@@ -85,8 +86,12 @@ public:
                     return a->freq > b->freq;
                 return a->key < b->key;
             });
+
         return nodes;
     }
 };
+
+void makeTree(BST<std::string>& tree, const char* filename);
+void dumpFrequencies(BST<std::string>& container);
 
 #endif  // INCLUDE_BST_H_
