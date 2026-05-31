@@ -60,36 +60,41 @@ class BST {
     }
 
  public:
-    BST() : treeRoot(nullptr) {}
-    ~BST() { deleteTree(treeRoot); }
+  BST() : treeRoot(nullptr) {}
+  ~BST() {
+    deleteTree(treeRoot);
+  }
+  void add(const T& value) {
+    treeRoot = insertRec(treeRoot, value);
+  }
+  int getFrequency(const T& value) const {
+    TreeNode* node = findRec(treeRoot, value);
+    return node ? node->freq : 0;
+  }
+  int getHeight() const {
+    return heightRec(treeRoot);
+  }
+  bool isEmpty() const {
+    return treeRoot == nullptr;
+  }
 
-    void add(const T& value) {
-        treeRoot = insertRec(treeRoot, value);
-    }
+  int depth() const {
+    return getHeight();
+  }
+  int search(const T& value) const {
+    return getFrequency(value);
+  }
 
-    int getFrequency(const T& value) const {
-        TreeNode* node = findRec(treeRoot, value);
-        return node ? node->freq : 0;
-    }
-
-    int getHeight() const {
-        return heightRec(treeRoot);
-    }
-
-    bool isEmpty() const {
-        return treeRoot == nullptr;
-    }
-
-    std::vector<TreeNode*> getNodesByFrequency() const {
-        std::vector<TreeNode*> nodes;
-        gatherNodes(treeRoot, nodes);
-        std::sort(nodes.begin(), nodes.end(),
-            [](const TreeNode* a, const TreeNode* b) {
-                if (a->freq != b->freq) return a->freq > b->freq;
-                return a->key < b->key;
-            });
-        return nodes;
-    }
+  std::vector<TreeNode*> getNodesByFrequency() const {
+    std::vector<TreeNode*> nodes;
+    gatherNodes(treeRoot, nodes);
+    std::sort(nodes.begin(), nodes.end(), [](const TreeNode* a, const TreeNode* b) {
+      if (a->freq != b->freq)
+        return a->freq > b->freq;
+      return a->key < b->key; 
+    });
+    return nodes;
+  }
 };
 
 void makeTree(BST<std::string>& tree, const char* filename);
